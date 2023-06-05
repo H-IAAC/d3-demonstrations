@@ -36,6 +36,10 @@ Neste exemplo foi criado um gráfico de scatterplot utilizando dados de um arqui
 
 Neste exemplo foi criado uma renderização adaptada do exemplo do [observablehq](https://observablehq.com/@d3/zoomable-circle-packing).
 
+### web5
+
+Neste exemplo foi criado um widget slider para interagir com o scatter plot utilizando somente Javascript.
+
 ## Notebook demonstrations
 
 ### note1
