@@ -24,7 +24,7 @@ Neste exemplo foi criada uma animação de círculo. Os novos métodos mostrados
 
 - **attr** - Modifica determinado atributo da seleção;
 - **style** - Modifica determinado estilo da seleção;
-- **transition** - Cria um objeto de transição. Ao dar atributos e estilos à este objeto, o elemento irá se transicionar para estes atributos;
+- **transition** - Cria um objeto de transição. Ao dar atributos e estilos a este objeto, o elemento irá se transicionar para estes atributos;
 - **delay** - Define o quanto a transição demorará para começar;
 - **duration** - Define a duração da transição.
 
@@ -44,4 +44,4 @@ Neste exemplo foi criado um widget slider para interagir com o scatter plot util
 
 ### note1
 
-Neste notebook é apresentado um método de integrar o D3.js no jupyter .
+Neste notebook é apresentado vários métodos de integrar o D3.js no jupyter .
