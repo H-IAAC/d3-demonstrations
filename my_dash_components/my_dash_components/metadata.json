@@ -1,0 +1,43 @@
+{
+  "src/ts/components/MyDashComponents.tsx": {
+    "displayName": "MyDashComponents",
+    "description": "",
+    "props": {
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "data": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "any",
+            "raw": "any"
+          },
+          "raw": "any[]"
+        }
+      },
+      "children": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "node",
+          "raw": "ReactNode"
+        }
+      }
+    },
+    "isContext": false
+  },
+  "src/ts/components/scatterplot.tsx": {
+    "displayName": "scatterplot",
+    "description": "",
+    "props": {},
+    "isContext": false
+  }
+}
