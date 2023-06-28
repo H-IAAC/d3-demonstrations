@@ -1,7 +1,5 @@
-from .MyDashComponents import MyDashComponents
-from .scatterplot import scatterplot
+from .ScatterplotComponent import ScatterplotComponent
 
 __all__ = [
-    "MyDashComponents",
-    "scatterplot"
+    "ScatterplotComponent"
 ]

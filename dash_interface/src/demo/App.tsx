@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from "react";
 import * as d3 from "d3";
 // @ts-ignore
 import tsvData from "./data.tsv";
-import MyDashComponents from "../ts/components/MyDashComponents";
+import ScatterplotComponent from "../ts/components/ScatterplotComponent";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -25,7 +25,7 @@ const App = () => {
     <div>
       <h1>Web Application</h1>
       {data !== null && (
-        <MyDashComponents id="component" data={data} />
+        <ScatterplotComponent id="component" data={data} />
       )}
       <button onClick={handleButton}>Button</button>
     </div>

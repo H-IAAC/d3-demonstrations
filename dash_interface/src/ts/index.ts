@@ -1,5 +1,5 @@
-import MyDashComponents from './components/MyDashComponents';
+import ScatterplotComponent from './components/ScatterplotComponent';
 
 export {
-    MyDashComponents
+    ScatterplotComponent
 }

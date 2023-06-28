@@ -1,6 +1,6 @@
 {
-  "src/ts/components/MyDashComponents.tsx": {
-    "displayName": "MyDashComponents",
+  "src/ts/components/ScatterplotComponent.tsx": {
+    "displayName": "ScatterplotComponent",
     "description": "",
     "props": {
       "id": {
@@ -32,12 +32,6 @@
         }
       }
     },
-    "isContext": false
-  },
-  "src/ts/components/scatterplot.tsx": {
-    "displayName": "scatterplot",
-    "description": "",
-    "props": {},
     "isContext": false
   }
 }

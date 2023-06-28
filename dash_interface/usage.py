@@ -11,7 +11,7 @@ iris_array_of_dicts = iris.to_dict(orient='records')
 app = Dash(__name__)
 
 app.layout = html.Div([
-    my_dash_components.MyDashComponents(
+    my_dash_components.ScatterplotComponent(
         id='input',
         data=iris_array_of_dicts
     ),

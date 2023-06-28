@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { DashComponentProps } from "../props";
-import { scatterplot } from "./scatterplot";
+import { scatterplot } from "../graphs/scatterplot";
 
 type Props = {
   // Insert props
@@ -9,7 +9,7 @@ type Props = {
 /**
  * Component description
  */
-const MyDashComponents:React.FC<Props> = ({id, data}) => {
+const ScatterplotComponent:React.FC<Props> = ({id, data}) => {
   const element = useRef();
 
   useEffect(() => {
@@ -19,6 +19,6 @@ const MyDashComponents:React.FC<Props> = ({id, data}) => {
   return <div id={id} ref={element}></div>;
 };
 
-MyDashComponents.defaultProps = {};
+ScatterplotComponent.defaultProps = {};
 
-export default MyDashComponents;
+export default ScatterplotComponent;
