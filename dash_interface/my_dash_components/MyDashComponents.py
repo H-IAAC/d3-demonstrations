@@ -21,10 +21,10 @@ Keyword arguments:
     _namespace = 'my_dash_components'
     _type = 'MyDashComponents'
     @_explicitize_args
-    def __init__(self, children=None, id=Component.UNDEFINED, data=Component.REQUIRED, **kwargs):
-        self._prop_names = ['children', 'id', 'data']
+    def __init__(self, id=Component.UNDEFINED, data=Component.REQUIRED, **kwargs):
+        self._prop_names = ['id', 'data']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['children', 'id', 'data']
+        self.available_properties = ['id', 'data']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
@@ -36,4 +36,4 @@ Keyword arguments:
                 raise TypeError(
                     'Required argument `' + k + '` was not specified.')
 
-        super(MyDashComponents, self).__init__(children=children, **args)
+        super(MyDashComponents, self).__init__(**args)

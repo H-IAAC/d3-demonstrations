@@ -40,20 +40,8 @@ Neste exemplo foi criado uma renderização adaptada do exemplo do [observablehq
 
 Neste exemplo foi criado um widget slider para interagir com o scatter plot utilizando somente Javascript.
 
-## Dash components
-
-Na pasta `dash_interface/` se encontra um boilerplate criado à partir deste [repositório](https://github.com/plotly/dash-typescript-component-template). À partir dele podem ser criados widgets customizados.
-
-Tutorial de como criar widgets customizados se encontram neste [site](https://dash.plotly.com/react-for-python-developers).
-
 ## Notebook demonstrations
 
 ### note1
 
 Neste notebook é apresentado vários métodos de integrar o D3.js no jupyter .
-
-### note2
-
-Neste notebook é apresentada o encapsulamento do D3.js com Dash. Para utilizar é necessário rodar o comando:
-
-    $ pip install dash_interface/

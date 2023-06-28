@@ -1,0 +1,7 @@
+dash
+ipyd3
+ipywidgets
+jupyter-dash
+jupyterlab
+pandas
+plotly
