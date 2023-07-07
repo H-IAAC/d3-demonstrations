@@ -4,10 +4,46 @@ import * as d3 from "d3";
 import tsvData from "./data.tsv";
 import ScatterplotComponent from "../ts/components/ScatterplotComponent";
 import LinearplotComponent from "../ts/components/LinearplotComponent";
+import HistogramplotComponent from "../ts/components/HistogramplotComponent";
 
 const App = () => {
   // return runScatterplot()
-  return runLinearplot();
+  // return runLinearplot();
+  return runHistogramplot();
+};
+
+const runHistogramplot = () => {
+  const data = [
+    { x_axis: 2, y_axis: 3 },
+    { x_axis: 2.32, y_axis: 3.5 },
+    { x_axis: 2.34, y_axis: 3.1 },
+    { x_axis: 2.555, y_axis: 3.8 },
+    { x_axis: 2.56, y_axis: 4 },
+    { x_axis: 2.57, y_axis: 4 },
+    { x_axis: 3, y_axis: 4 },
+    { x_axis: 4, y_axis: 5 },
+    { x_axis: 4, y_axis: 5 },
+    { x_axis: 4, y_axis: 5 },
+    { x_axis: 4, y_axis: 5 },
+    { x_axis: 4, y_axis: 5 },
+    { x_axis: 4, y_axis: 5 },
+    { x_axis: 5, y_axis: 7 },
+    { x_axis: 5, y_axis: 7 },
+    { x_axis: 5, y_axis: 7 },
+    { x_axis: 5, y_axis: 7 },
+    { x_axis: 6, y_axis: 4 },
+  ];
+
+  return (
+    <div>
+      <HistogramplotComponent
+        id="component"
+        data={data}
+        value="x_axis"
+        xStart={0}
+      ></HistogramplotComponent>
+    </div>
+  );
 };
 
 const runLinearplot = () => {
