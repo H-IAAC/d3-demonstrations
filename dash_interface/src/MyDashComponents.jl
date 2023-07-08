@@ -5,6 +5,8 @@ using Dash
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
 const version = "1.0.0"
 
+include("jl/histogramplotcomponent.jl")
+include("jl/linearplotcomponent.jl")
 include("jl/scatterplotcomponent.jl")
 
 function __init__()

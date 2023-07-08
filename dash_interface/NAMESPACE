@@ -1,6 +1,10 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+export(HistogramplotComponent)
+export(LinearplotComponent)
 export(ScatterplotComponent)
+export(histogramplotComponent)
+export(linearplotComponent)
 export(myDashComponents)
 export(scatterplot)
 export(scatterplotComponent)
