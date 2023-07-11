@@ -7,6 +7,7 @@ type Props = {
   y_axis: string;
   xStart?: Number;
   xEnd?: Number;
+  value?: string;
 } & DashComponentProps;
 
 /**
@@ -15,18 +16,30 @@ type Props = {
 const LinearplotComponent: React.FC<Props> = ({
   id,
   data,
+  setProps,
   x_axis,
   y_axis,
   xStart,
   xEnd,
+  value = "",
 }) => {
   const element = useRef();
+  function setValue(newValue: string) {
+    setProps({ value: newValue });
+  }
 
   useEffect(() => {
-    linearplot(data, element.current, x_axis, y_axis, xStart, xEnd);
+    linearplot(data, element.current, x_axis, y_axis, xStart, xEnd, setValue);
   });
 
-  return <div id={id} ref={element}></div>;
+  return (
+    <div id={id} ref={element}>
+      <input
+        value={value}
+        onChange={(e) => setProps({ value: e.target.value })}
+      />
+    </div>
+  );
 };
 
 LinearplotComponent.defaultProps = {};

@@ -62,6 +62,4 @@ export function histogramplot(data, element, value, xStart?, xEnd?) {
     .attr("width", (d) => x(d.x1) - x(d.x0) - 1)
     .attr("y", (d) => y(d.length))
     .attr("height", (d) => y(0) - y(d.length));
-
-  console.log(data);
 }

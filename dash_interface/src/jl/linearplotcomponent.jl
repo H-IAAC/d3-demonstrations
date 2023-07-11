@@ -14,6 +14,7 @@ Keyword arguments:
 - `children` (a list of or a singular dash component, string or number; optional)
 - `id` (String; optional): Unique ID to identify this component in Dash callbacks.
 - `data` (Array of Bool | Real | String | Dict | Arrays; required): Update props to trigger callbacks.
+- `value` (String; optional)
 - `xEnd` (optional): . xEnd has the following type: lists containing elements 'toString', 'toFixed', 'toExponential', 'toPrecision', 'valueOf', 'toLocaleString'.
 Those elements have the following types:
   - `toString` (optional): Returns a string representation of an object.
@@ -54,7 +55,7 @@ Those elements have the following types:
 - `y_axis` (String; required)
 """
 function linearplotcomponent(; kwargs...)
-        available_props = Symbol[:children, :id, :data, :xEnd, :xStart, :x_axis, :y_axis]
+        available_props = Symbol[:children, :id, :data, :value, :xEnd, :xStart, :x_axis, :y_axis]
         wild_props = Symbol[]
         return Component("linearplotcomponent", "LinearplotComponent", "my_dash_components", available_props, wild_props; kwargs...)
 end

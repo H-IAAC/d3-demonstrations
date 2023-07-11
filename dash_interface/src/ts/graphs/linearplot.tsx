@@ -1,14 +1,22 @@
 import * as d3 from "d3";
 
-export function linearplot(data, element, x_axis, y_axis, xStart?, xEnd?) {
+export function linearplot(
+  data,
+  element,
+  x_axis,
+  y_axis,
+  xStart?,
+  xEnd?,
+  setValue?
+) {
   d3.select(element).selectAll("*").remove();
 
   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
   const width = 720 - margin.left - margin.right;
   const height = 375 - margin.top - margin.bottom;
 
-  const xMin = xStart ?? d3.min(data, (d) => d[x_axis])
-  const xMax = xEnd ?? d3.max(data, (d) => d[x_axis])
+  const xMin = xStart ?? d3.min(data, (d) => d[x_axis]);
+  const xMax = xEnd ?? d3.max(data, (d) => d[x_axis]);
 
   const x = d3.scaleLinear().range([0, width]);
 
@@ -17,6 +25,41 @@ export function linearplot(data, element, x_axis, y_axis, xStart?, xEnd?) {
   const xAxis = d3.axisBottom(x);
 
   const yAxis = d3.axisLeft(y);
+
+  const bisect = d3.bisector(function (d) {
+    return d.x;
+  }).left;
+
+  function mouseover(event, d) {
+    focus.style("opacity", 1);
+    focusText.style("opacity", 1);
+    focus.attr("x", event.x - 30).attr("y", event.y - 40);
+    focusText
+      .html(
+        "x:" +
+          Math.round(d[x_axis] * 10) / 10 +
+          "  -  " +
+          "y:" +
+          Math.round(d[y_axis] * 10) / 10
+      )
+      .attr("x", event.x - 15)
+      .attr("y", event.y - 20);
+  }
+
+  function mouseout() {
+    focus.style("opacity", 0);
+    focusText.style("opacity", 0);
+  }
+
+  function mouseClick(event, d) {
+    const text =
+      "x:" +
+      Math.round(d[x_axis] * 10) / 10 +
+      "  -  " +
+      "y:" +
+      Math.round(d[y_axis] * 10) / 10;
+    setValue(text);
+  }
 
   const svg = d3
     .select(element)
@@ -28,6 +71,24 @@ export function linearplot(data, element, x_axis, y_axis, xStart?, xEnd?) {
 
   x.domain([xMin, xMax]);
   y.domain(d3.extent(data, (d) => d[y_axis]));
+
+  const focus = svg
+    .append("g")
+    .append("rect")
+    .style("fill", "none")
+    .attr("width", 160)
+    .attr("height", 40)
+    .attr("stroke", "#69b3a2")
+    .attr("stroke-width", 4)
+    .style("opacity", 0);
+
+  var focusText = svg
+    .append("g")
+    .append("text")
+    .style("opacity", 0)
+    .attr("text-anchor", "left")
+    .attr("alignment-baseline", "middle")
+    .html("lkjdslkfjsd");
 
   svg
     .append("g")
@@ -61,5 +122,17 @@ export function linearplot(data, element, x_axis, y_axis, xStart?, xEnd?) {
         .y((d) => y(d[y_axis]))
     );
 
-  console.log(data);
+  svg
+    .selectAll("myCircles")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("fill", "red")
+    .attr("stroke", "none")
+    .attr("cx", (d) => x(d[x_axis]))
+    .attr("cy", (d) => y(d[y_axis]))
+    .attr("r", 3)
+    .on("mouseover", mouseover)
+    .on("mouseout", mouseout)
+    .on("click", mouseClick);
 }

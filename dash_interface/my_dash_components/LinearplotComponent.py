@@ -17,6 +17,8 @@ Keyword arguments:
 - data (list of boolean | number | string | dict | lists; required):
     Update props to trigger callbacks.
 
+- value (string; optional)
+
 - xEnd (dict; optional)
 
     `xEnd` is a dict with keys:
@@ -127,10 +129,10 @@ Keyword arguments:
     _namespace = 'my_dash_components'
     _type = 'LinearplotComponent'
     @_explicitize_args
-    def __init__(self, children=None, x_axis=Component.REQUIRED, y_axis=Component.REQUIRED, xStart=Component.UNDEFINED, xEnd=Component.UNDEFINED, id=Component.UNDEFINED, data=Component.REQUIRED, **kwargs):
-        self._prop_names = ['children', 'id', 'data', 'xEnd', 'xStart', 'x_axis', 'y_axis']
+    def __init__(self, children=None, x_axis=Component.REQUIRED, y_axis=Component.REQUIRED, xStart=Component.UNDEFINED, xEnd=Component.UNDEFINED, value=Component.UNDEFINED, id=Component.UNDEFINED, data=Component.REQUIRED, **kwargs):
+        self._prop_names = ['children', 'id', 'data', 'value', 'xEnd', 'xStart', 'x_axis', 'y_axis']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['children', 'id', 'data', 'xEnd', 'xStart', 'x_axis', 'y_axis']
+        self.available_properties = ['children', 'id', 'data', 'value', 'xEnd', 'xStart', 'x_axis', 'y_axis']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

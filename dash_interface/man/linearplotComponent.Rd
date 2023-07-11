@@ -10,8 +10,8 @@
 }
 
 \usage{
-linearplotComponent(children=NULL, id=NULL, data=NULL, xEnd=NULL, xStart=NULL,
-x_axis=NULL, y_axis=NULL)
+linearplotComponent(children=NULL, id=NULL, data=NULL, value=NULL, xEnd=NULL,
+xStart=NULL, x_axis=NULL, y_axis=NULL)
 }
 
 \arguments{
@@ -20,6 +20,8 @@ x_axis=NULL, y_axis=NULL)
 \item{id}{Character. Unique ID to identify this component in Dash callbacks.}
 
 \item{data}{List of logical | numeric | character | named list | unnamed lists. Update props to trigger callbacks.}
+
+\item{value}{Character. }
 
 \item{xEnd}{Lists containing elements 'tostring', 'tofixed', 'toexponential', 'toprecision', 'valueof', 'tolocalestring'.
 those elements have the following types:

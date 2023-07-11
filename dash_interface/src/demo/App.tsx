@@ -8,8 +8,8 @@ import HistogramplotComponent from "../ts/components/HistogramplotComponent";
 
 const App = () => {
   // return runScatterplot()
-  // return runLinearplot();
-  return runHistogramplot();
+  return runLinearplot();
+  // return runHistogramplot();
 };
 
 const runHistogramplot = () => {
@@ -41,6 +41,7 @@ const runHistogramplot = () => {
         data={data}
         value="x_axis"
         xStart={0}
+        setProps={null}
       ></HistogramplotComponent>
     </div>
   );
@@ -63,6 +64,7 @@ const runLinearplot = () => {
         x_axis="x_axis"
         y_axis="y_axis"
         xStart={0}
+        setProps={null}
       ></LinearplotComponent>
     </div>
   );
@@ -88,7 +90,9 @@ const runScatterplot = () => {
   return (
     <div>
       <h1>Web Application</h1>
-      {data !== null && <ScatterplotComponent id="component" data={data} />}
+      {data !== null && (
+        <ScatterplotComponent id="component" data={data} setProps={null} />
+      )}
       <button onClick={handleButton}>Button</button>
     </div>
   );

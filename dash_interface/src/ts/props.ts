@@ -18,5 +18,5 @@ export type DashComponentProps = {
      * Update props to trigger callbacks.
      */
     data: Array<any>;
-    // setProps: (props: Record<string, any>) => void;
+    setProps: (props: Record<string, any>) => void;
 }
