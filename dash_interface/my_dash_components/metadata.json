@@ -144,6 +144,93 @@
     },
     "isContext": false
   },
+  "src/ts/components/LinearHistComponent.tsx": {
+    "displayName": "LinearHistComponent",
+    "description": "",
+    "props": {
+      "histData": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "any",
+            "raw": "any"
+          },
+          "raw": "any[]"
+        }
+      },
+      "x_axis": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "y_axis": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "histValue": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "value": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "data": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "any",
+            "raw": "any"
+          },
+          "raw": "any[]"
+        }
+      },
+      "setProps": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
+      },
+      "children": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "node",
+          "raw": "ReactNode"
+        }
+      }
+    },
+    "isContext": false
+  },
   "src/ts/components/LinearplotComponent.tsx": {
     "displayName": "LinearplotComponent",
     "description": "",
