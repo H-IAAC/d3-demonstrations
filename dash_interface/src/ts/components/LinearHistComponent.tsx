@@ -29,7 +29,6 @@ const LinearHistComponent: React.FC<Props> = ({
   }
 
   useEffect(() => {
-    console.log(histValue);
     linearhist(
       data,
       histData,

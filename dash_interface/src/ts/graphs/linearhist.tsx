@@ -14,7 +14,7 @@ export function linearhist(
   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
   const width = 720 - margin.left - margin.right;
   const height = 375 - margin.top - margin.bottom;
-  const heightHist = 120 - margin.top - margin.bottom;
+  const heightHist = 80 - margin.top - margin.bottom;
 
   const xMin = Math.min(
     d3.min(pdpData, (d) => d[x_axis]),
