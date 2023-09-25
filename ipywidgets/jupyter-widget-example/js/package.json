@@ -31,12 +31,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@jupyterlab/builder": "^3.0.0",
-    "webpack": "^5",
-    "rimraf": "^2.6.1"
+    "@jupyterlab/builder": "^4.0.6",
+    "rimraf": "^2.6.1",
+    "webpack": "^5"
   },
   "dependencies": {
-    "@jupyter-widgets/base": "^1.1 || ^2 || ^3 || ^4 || ^6"
+    "@jupyter-widgets/base": "^1.1 || ^2 || ^3 || ^4 || ^6",
+    "d3": "^7.8.5"
   },
   "jupyterlab": {
     "extension": "lib/labplugin",

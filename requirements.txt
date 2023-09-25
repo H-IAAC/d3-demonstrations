@@ -3,5 +3,8 @@ ipyd3
 ipywidgets
 jupyter-dash
 jupyterlab
+matplotlib
 pandas
 plotly
+scikit-learn
+seaborn

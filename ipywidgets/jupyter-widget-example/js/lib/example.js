@@ -18,6 +18,8 @@ import { DOMWidgetModel, DOMWidgetView } from '@jupyter-widgets/base';
 // When serialiazing the entire widget state for embedding, only values that
 // differ from the defaults will be serialized.
 
+var d3_scatterplot = require('./scatterplot.js');
+
 export class HelloModel extends DOMWidgetModel {
     defaults() {
       return {
@@ -44,4 +46,44 @@ export class HelloView extends DOMWidgetView {
     value_changed() {
         this.el.textContent = this.model.get('value');
     }
+}
+
+export class ScatterplotModel extends DOMWidgetModel {
+  defaults() {
+    return {
+      ...super.defaults(),
+      _model_name : 'ScatterplotModel',
+      _view_name : 'ScatterplotView',
+      _model_module : 'jupyter-widget-example',
+      _view_module : 'jupyter-widget-example',
+      _model_module_version : '0.1.0',
+      _view_module_version : '0.1.0'
+    };
+  }
+}
+
+export class ScatterplotView extends DOMWidgetView {
+  render() {
+      // explicit
+      let that = this;
+      this.loadAndCreateToolElement();
+
+      // Observe changes in the value traitlet in Python, and define
+      // a custom callback.
+      that.model.on('change:value', that.value_changed, that);
+      // debug in browser
+      window.dom = that.el;
+  }
+
+  value_changed() {
+      this.el.textContent = this.model.get('value');
+      this.render();
+  }
+
+  loadAndCreateToolElement() {
+      let that = this;
+
+      // scatterplot rendering
+      d3_scatterplot.create(that);
+  }
 }
