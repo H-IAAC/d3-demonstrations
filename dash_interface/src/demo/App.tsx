@@ -8,10 +8,10 @@ import HistogramplotComponent from "../ts/components/HistogramplotComponent";
 import LinearHistComponent from "../ts/components/LinearHistComponent";
 
 const App = () => {
-  // return runScatterplot()
+  return runScatterplot()
   // return runLinearplot();
   // return runHistogramplot();
-  return runLinearHistComponent();
+  // return runLinearHistComponent();
 };
 
 const runLinearHistComponent = () => {''
