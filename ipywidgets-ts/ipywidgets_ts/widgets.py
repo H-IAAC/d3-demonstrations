@@ -59,3 +59,21 @@ class Histogramplot(DOMWidget):
     value = Unicode().tag(sync=True)
     xStart = Unicode().tag(sync=True)
     xEnd = Unicode().tag(sync=True)
+    
+class LinearHist(DOMWidget):
+    """TODO: Add docstring here
+    """
+    _model_name = Unicode('LinearHistModel').tag(sync=True)
+    _model_module = Unicode(module_name).tag(sync=True)
+    _model_module_version = Unicode(module_version).tag(sync=True)
+    
+    _view_name = Unicode('LinearHistView').tag(sync=True)
+    _view_module = Unicode(module_name).tag(sync=True)
+    _view_module_version = Unicode(module_version).tag(sync=True)
+
+    pdpData = List([]).tag(sync=True)
+    histData = List([]).tag(sync=True)
+    x_axis = Unicode().tag(sync=True)
+    y_axis = Unicode().tag(sync=True)
+    histValue = Unicode().tag(sync=True)
+    clickedValue = Unicode().tag(sync=True)

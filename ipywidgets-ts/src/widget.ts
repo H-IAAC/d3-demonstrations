@@ -9,6 +9,7 @@ import {
 import { scatterplot } from './graphs/scatterplot';
 import { linearplot } from './graphs/linearplot';
 import { histogramplot } from './graphs/histogramplot';
+import { linearhist } from './graphs/linearhist';
 
 import { MODULE_NAME, MODULE_VERSION } from './version';
 
@@ -151,5 +152,60 @@ export class HistogramplotView extends DOMWidgetView {
     var xStart = this.model.get('xStart');
     var xEnd = this.model.get('xEnd');
     histogramplot(data, this.el, value, xStart, xEnd);
+  }
+}
+
+export class LinearHistModel extends DOMWidgetModel {
+  defaults() {
+    return {
+      ...super.defaults(),
+      _model_name: LinearHistModel.model_name,
+      _model_module: LinearHistModel.model_module,
+      _model_module_version: LinearHistModel.model_module_version,
+      _view_name: LinearHistModel.view_name,
+      _view_module: LinearHistModel.view_module,
+      _view_module_version: LinearHistModel.view_module_version,
+      data: [],
+      x_axis: String,
+      y_axis: String,
+      xStart: String,
+      xEnd: String,
+      clickedValue: String,
+    };
+  }
+
+  static serializers: ISerializers = {
+    ...DOMWidgetModel.serializers,
+    // Add any extra serializers here
+  };
+
+  static model_name = 'LinearHistModel';
+  static model_module = MODULE_NAME;
+  static model_module_version = MODULE_VERSION;
+  static view_name = 'LinearHistView'; // Set to null if no view
+  static view_module = MODULE_NAME; // Set to null if no view
+  static view_module_version = MODULE_VERSION;
+}
+
+export class LinearHistView extends DOMWidgetView {
+  render() {
+    this.value_changed();
+    this.model.on('change:pdpData', this.value_changed, this);
+  }
+
+  value_changed() {
+    let that = this
+
+    var pdpData = this.model.get('pdpData');
+    var histData = this.model.get('histData');
+    var x_axis = this.model.get('x_axis');
+    var y_axis = this.model.get('y_axis');
+    var histValue = this.model.get('histValue');
+    linearhist(that, pdpData, histData, this.el, x_axis, y_axis, histValue, this.setValue);
+  }
+
+  setValue(text: string, that: any) {
+    that.model.set({'clickedValue': text})
+    that.model.save_changes();
   }
 }

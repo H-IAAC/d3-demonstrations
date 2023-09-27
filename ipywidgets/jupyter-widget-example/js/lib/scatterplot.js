@@ -44,8 +44,8 @@ function render(that) {
 
   var yAxis = d3.axisLeft(y);
 
-  svgElmt.setAttribute('width', width + margin.left + margin.right);
-  svgElmt.setAttribute('height', height + margin.top + margin.bottom);
+  svgElmt.setAttribute("width", width + margin.left + margin.right);
+  svgElmt.setAttribute("height", height + margin.top + margin.bottom);
 
   var svg = d3
     .select(svgElmt)

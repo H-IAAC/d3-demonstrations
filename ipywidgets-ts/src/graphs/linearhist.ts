@@ -1,13 +1,14 @@
 import * as d3 from 'd3';
 
 export function linearhist(
+  that: any,
   pdpData: any[],
   histData: any[],
   element: HTMLElement,
-  x_axis: string | number,
-  y_axis: string | number,
-  histValue: string | number,
-  setValue?: (arg0: string) => void
+  x_axis: string,
+  y_axis: string,
+  histValue: string,
+  setValue?: (arg0: string, that: any) => void
 ) {
   d3.select(element).selectAll('*').remove();
 
@@ -17,12 +18,12 @@ export function linearhist(
   const heightHist = 80 - margin.top - margin.bottom;
 
   const xMin = Math.min(
-    <number> d3.min(pdpData, (d) => d[x_axis]),
-    <number> d3.min(histData, (d) => d[histValue])
+    <number>d3.min(pdpData, (d) => d[x_axis]),
+    <number>d3.min(histData, (d) => d[histValue])
   );
   const xMax = Math.max(
-    <number> d3.max(pdpData, (d) => d[x_axis]),
-    <number> d3.max(histData, (d) => d[histValue])
+    <number>d3.max(pdpData, (d) => d[x_axis]),
+    <number>d3.max(histData, (d) => d[histValue])
   );
 
   const x = d3.scaleLinear().range([0, width]);
@@ -34,13 +35,10 @@ export function linearhist(
 
   const yAxis = d3.axisLeft(y);
 
-  function mouseover(
-    event: { x: number; y: number },
-    d: { [x: string]: number }
-  ) {
+  function mouseover(event: MouseEvent, d: { [x: string]: number }) {
     focus.style('opacity', 1);
     focusText.style('opacity', 1);
-    focus.attr('x', event.x - 30).attr('y', event.y - 40);
+    focus.attr('x', event.offsetX - 30).attr('y', event.offsetY - 40);
     focusText
       .html(
         'x:' +
@@ -49,8 +47,8 @@ export function linearhist(
           'y:' +
           Math.round(d[y_axis] * 10) / 10
       )
-      .attr('x', event.x - 15)
-      .attr('y', event.y - 20);
+      .attr('x', event.offsetX - 15)
+      .attr('y', event.offsetY - 20);
   }
 
   function mouseout() {
@@ -65,10 +63,10 @@ export function linearhist(
       '  -  ' +
       'y:' +
       Math.round(d[y_axis] * 10) / 10;
-    setValue?.(text);
+    setValue?.(text, that);
   }
 
-  let histValues = <number[]> histData.map(d => d[histValue])
+  let histValues = <number[]>histData.map((d) => d[histValue]);
   const bins = d3
     .bin()
     .thresholds(20)
@@ -83,8 +81,8 @@ export function linearhist(
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
   x.domain([xMin, xMax]);
-  y.domain(<[number, number]> d3.extent(pdpData, (d) => d[y_axis]));
-  yHist.domain(<[number, number]> [0, d3.max(bins, (d) => d.length)]);
+  y.domain(<[number, number]>d3.extent(pdpData, (d) => d[y_axis]));
+  yHist.domain(<[number, number]>[0, d3.max(bins, (d) => d.length)]);
 
   const focus = svg
     .append('g')
@@ -122,17 +120,6 @@ export function linearhist(
     .attr('dy', '.71em')
     .style('text-anchor', 'end');
 
-  // svg
-  //   .append("g")
-  //   .attr("fill", "paleturquoise")
-  //   .selectAll()
-  //   .data(bins)
-  //   .join("rect")
-  //   .attr("x", (d) => x(d.x0) + 1)
-  //   .attr("width", (d) => x(d.x1) - x(d.x0) - 1)
-  //   .attr("y", (d) => yHist(d.length) + height - heightHist)
-  //   .attr("height", (d) => yHist(0) - yHist(d.length));
-
   svg
     .append('path')
     .datum(bins)
@@ -148,18 +135,20 @@ export function linearhist(
         .curve(d3.curveCatmullRom)
     );
 
+  let dataPath = pdpData.map(d => [<number> d[x_axis], <number> d[y_axis]])
+
   svg
     .append('path')
-    .datum(pdpData)
+    .datum(dataPath)
     .attr('fill', 'none')
     .attr('stroke', 'steelblue')
     .attr('stroke-width', 1.5)
     .attr(
-      'd',
+      "d",
       d3
         .line<any>()
-        .x((d) => x(d[x_axis]))
-        .y((d) => y(d[y_axis]))
+        .x((d) => x(d[0]))
+        .y((d) => y(d[1]))
     );
 
   svg
