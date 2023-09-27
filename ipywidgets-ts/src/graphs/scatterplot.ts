@@ -1,8 +1,6 @@
 import * as d3 from 'd3';
 
 export function scatterplot(data: any[], element: HTMLElement) {
-  console.log(data)
-  console.log(element)
   d3.select(element)
   .selectAll("*")
   .remove();
