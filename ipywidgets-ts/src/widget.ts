@@ -8,6 +8,7 @@ import {
 } from '@jupyter-widgets/base';
 import { scatterplot } from './graphs/scatterplot';
 import { linearplot } from './graphs/linearplot';
+import { histogramplot } from './graphs/histogramplot';
 
 import { MODULE_NAME, MODULE_VERSION } from './version';
 
@@ -105,5 +106,50 @@ export class LinearplotView extends DOMWidgetView {
   setValue(text: string, that: any) {
     that.model.set({'clickedValue': text})
     that.model.save_changes();
+  }
+}
+
+export class HistogramplotModel extends DOMWidgetModel {
+  defaults() {
+    return {
+      ...super.defaults(),
+      _model_name: HistogramplotModel.model_name,
+      _model_module: HistogramplotModel.model_module,
+      _model_module_version: HistogramplotModel.model_module_version,
+      _view_name: HistogramplotModel.view_name,
+      _view_module: HistogramplotModel.view_module,
+      _view_module_version: HistogramplotModel.view_module_version,
+      data: [],
+      value: String,
+      xStart: String,
+      xEnd: String,
+    };
+  }
+
+  static serializers: ISerializers = {
+    ...DOMWidgetModel.serializers,
+    // Add any extra serializers here
+  };
+
+  static model_name = 'HistogramplotModel';
+  static model_module = MODULE_NAME;
+  static model_module_version = MODULE_VERSION;
+  static view_name = 'HistogramplotView'; // Set to null if no view
+  static view_module = MODULE_NAME; // Set to null if no view
+  static view_module_version = MODULE_VERSION;
+}
+
+export class HistogramplotView extends DOMWidgetView {
+  render() {
+    this.value_changed();
+    this.model.on('change:data', this.value_changed, this);
+  }
+
+  value_changed() {
+    var data = this.model.get('data');
+    var value = this.model.get('value');
+    var xStart = this.model.get('xStart');
+    var xEnd = this.model.get('xEnd');
+    histogramplot(data, this.el, value, xStart, xEnd);
   }
 }

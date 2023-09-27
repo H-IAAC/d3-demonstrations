@@ -9,7 +9,7 @@ TODO: Add module docstring
 """
 
 from ipywidgets import DOMWidget
-from traitlets import Unicode, List, observe
+from traitlets import Unicode, List
 from ._frontend import module_name, module_version
 
 
@@ -44,3 +44,18 @@ class Linearplot(DOMWidget):
     xEnd = Unicode().tag(sync=True)
     clickedValue = Unicode().tag(sync=True)
     
+class Histogramplot(DOMWidget):
+    """TODO: Add docstring here
+    """
+    _model_name = Unicode('HistogramplotModel').tag(sync=True)
+    _model_module = Unicode(module_name).tag(sync=True)
+    _model_module_version = Unicode(module_version).tag(sync=True)
+    
+    _view_name = Unicode('HistogramplotView').tag(sync=True)
+    _view_module = Unicode(module_name).tag(sync=True)
+    _view_module_version = Unicode(module_version).tag(sync=True)
+
+    data = List([]).tag(sync=True)
+    value = Unicode().tag(sync=True)
+    xStart = Unicode().tag(sync=True)
+    xEnd = Unicode().tag(sync=True)

@@ -20,7 +20,7 @@ export function linearplot(
   if(!xStart) xMin = d3.min(data, (d) => d[x_axis]);
 
   let xMax = xEnd;
-  if(!xStart) xMax = d3.max(data, (d) => d[x_axis]);
+  if(!xEnd) xMax = d3.max(data, (d) => d[x_axis]);
 
   const x = d3.scaleLinear().range([0, width]);
 
