@@ -46,6 +46,69 @@ Na pasta `dash_interface/` se encontra um boilerplate criado à partir deste [re
 
 Tutorial de como criar widgets customizados se encontram neste [site](https://dash.plotly.com/react-for-python-developers).
 
+## Ipywidgets
+
+### Requisitos
+
+- Node.js
+- Yarn
+- cookiecutter
+
+### Cookiecutters
+
+- **Javascript:** cookiecutter https://github.com/jupyter/widget-cookiecutter.git
+- **Typescript:** cookiecutter https://github.com/jupyter-widgets/widget-ts-cookiecutter.git
+
+### Tutorial instalação cookiecutter Javascript
+
+- Criar ambiente virtual
+- pip install -e .
+- No arquivo "js/package.json", dentro de "devDependencies", mudar versão para: "@jupyterlab/builder": "^4.0.6"
+- cd js
+- npm install
+- cd ..
+- Para notebook rodar:
+```console
+    $ pip install --upgrade notebook==6.4.12
+    $ pip install traitlets==5.9.0
+    $ jupyter nbextension install --py --symlink --sys-prefix <python_package_name>
+    $ jupyter nbextension enable --py --sys-prefix <python_package_name>
+```
+- Para jupyterlab rodar:
+```console
+    $ pip install jupyterlab
+    $ jupyter labextension develop --overwrite <python_package_name>
+```
+- Para testar, criar notebook e rodar:
+```python
+    import jupyter_widget_example
+    jupyter_widget_example.HelloWorld()
+```
+
+### Tutorial instalação cookiecutter Typescript
+
+- Criar ambiente virtual
+- pip install -e .
+- No arquivo "package.json", dentro de "devDependencies", mudar versão para: "@jupyterlab/builder": "^4.0.6"
+- npm install
+- Para notebook rodar:
+```console
+    $ pip install --upgrade notebook==6.4.12
+    $ pip install traitlets==5.9.0
+    $ jupyter nbextension install --py --symlink --sys-prefix <python_package_name>
+    $ jupyter nbextension enable --py --sys-prefix <python_package_name>
+```
+- Para jupyterlab rodar:
+```console
+    $ pip install jupyterlab
+    $ jupyter labextension develop --overwrite <python_package_name>
+```
+- Para testar, criar notebook e rodar:
+```python
+    import jupyter_widget_example
+    jupyter_widget_example.HelloWorld()
+```
+
 ## Notebook demonstrations
 
 ### note1
@@ -57,3 +120,12 @@ Neste notebook é apresentado vários métodos de integrar o D3.js no jupyter .
 Neste notebook é apresentada o encapsulamento do D3.js com Dash. Para utilizar é necessário rodar o comando:
 
     $ pip install dash_interface/
+
+### note3
+
+Este notebook é uma tentativa de interação com os dados de um aplicativo em Dash.
+
+### note4
+
+Este notebook é demonstra a aplicação de widgets customizados.
+
